@@ -1,6 +1,6 @@
 --extra-index-url https://download.pytorch.org/whl/cpu
 torch==2.2.2+cpu
-
+numpy<2
 Django==5.2.7
 djangorestframework==3.16.1
 djangorestframework-simplejwt==5.5.1
