@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# Django
+db.sqlite3
+*.log
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Vector DB
+chroma_db/
+
+# Node
+node_modules/
+dist/
+build/
+npm-debug.log*
+.eslintcache
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sw?
+
+# OS
+Thumbs.db
+

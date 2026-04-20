@@ -1,0 +1,120 @@
+<!doctype html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interview Prep AI</title>
+
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-high": "#e7e7f2",
+                        "secondary-fixed-dim": "#b4c5fb",
+                        "secondary-container": "#b6c8fe",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#380d00",
+                        "surface-container": "#ededf8",
+                        "primary-container": "#0052cc",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#7b2600",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#dae2ff",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e1e2ec",
+                        "on-secondary-container": "#415382",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#191b23",
+                        "outline-variant": "#c3c6d6",
+                        "secondary-fixed": "#dae2ff",
+                        "surface-dim": "#d9d9e4",
+                        "primary": "#003d9b",
+                        "inverse-surface": "#2e3038",
+                        "on-tertiary-container": "#ffc6b2",
+                        "inverse-primary": "#b2c5ff",
+                        "on-background": "#191b23",
+                        "surface-container-low": "#f3f3fd",
+                        "surface-bright": "#faf8ff",
+                        "surface": "#faf8ff",
+                        "surface-container-highest": "#e1e2ec",
+                        "on-primary-fixed": "#001848",
+                        "tertiary-fixed": "#ffdbcf",
+                        "background": "#faf8ff",
+                        "on-primary-container": "#c4d2ff",
+                        "error": "#ba1a1a",
+                        "secondary": "#4c5d8d",
+                        "on-secondary-fixed-variant": "#344573",
+                        "on-primary-fixed-variant": "#0040a2",
+                        "tertiary-fixed-dim": "#ffb59b",
+                        "surface-tint": "#0c56d0",
+                        "inverse-on-surface": "#f0f0fb",
+                        "tertiary-container": "#a33500",
+                        "on-tertiary-fixed-variant": "#812800",
+                        "outline": "#737685",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#021945",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "on-surface-variant": "#434654"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        .brand-font {
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+        }
+
+        .bg-primary-gradient {
+            background: linear-gradient(135deg, #0052cc 0%, #003d9b 100%);
+        }
+
+        .ai-pulse-glow {
+            box-shadow: 0 0 20px 2px rgba(12, 86, 208, 0.15);
+        }
+
+        .primary-gradient {
+            background: linear-gradient(135deg, #0052cc 0%, #003d9b 100%);
+        }
+
+        .ai-pulse-aura {
+            background: radial-gradient(circle, rgba(12, 86, 208, 0.08) 0%, rgba(250, 248, 255, 0) 70%);
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-surface antialiased">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>
