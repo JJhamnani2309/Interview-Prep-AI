@@ -70,8 +70,9 @@ def upload_resume(request):
 
     parsed_data = parse_resume_with_llm(raw_text)
 
-    from ai_features.rag import embed_and_store_resume
-    embed_and_store_resume(request.user.id, raw_text)
+    from ai_features.rag import embed_and_store_resume, delete_user_vectors
+    delete_user_vectors(request.user.id)
+    embed_and_store_resume(request.user.id, raw_text, parsed_data=parsed_data)
 
     Resume.objects.update_or_create(
         user=request.user,
@@ -106,6 +107,9 @@ def get_parsed_resume(request):
 @permission_classes([IsAuthenticated])
 def delete_resume(request):
     from ai_features.models import MCQHistory, ATSHistory, HRHistory
+    from ai_features.rag import delete_user_vectors
+
+    delete_user_vectors(request.user.id)
 
     Resume.objects.filter(user=request.user).delete()
     MCQHistory.objects.filter(user=request.user).delete()

@@ -35,7 +35,7 @@ def generate_mcqs(request):
     if not skills:
         return Response({'error': 'Skills are required to generate MCQs'}, status=400)
 
-    context = retrieve_context(request.user.id, f"Questions for skills: {', '.join(skills)}")
+    context = retrieve_context(request.user.id, f"projects and work experience using {', '.join(skills)}", k=4)
     questions_per_skill = 10
     total_questions = len(skills) * questions_per_skill
 
@@ -110,12 +110,7 @@ def submit_mcqs(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def check_ats(request):
-    try:
-        resume = Resume.objects.get(user=request.user)
-    except Resume.DoesNotExist:
-        return Response({'error': 'Please upload a resume first'}, status=404)
-
-    raw_text = resume.raw_text
+    raw_text = retrieve_context(request.user.id, "skills experience achievements education certifications projects", k=6)
 
     prompt = f"""
     You are an extremely harsh and brutally honest ATS (Applicant Tracking System) evaluator.
@@ -167,11 +162,7 @@ def check_ats(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def hr_question(request):
-    try:
-        resume = Resume.objects.get(user=request.user)
-        resume_snippet = resume.raw_text[:1000]
-    except Resume.DoesNotExist:
-        resume_snippet = ''
+    resume_snippet = retrieve_context(request.user.id, "work experience internship projects achievements challenges responsibilities", k=3)
 
     prompt = f"""
     Ask one challenging HR mock interview question for a candidate. 
