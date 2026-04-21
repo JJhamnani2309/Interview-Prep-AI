@@ -57,7 +57,7 @@ Open a terminal in the root project folder:
 ```bash
 # Optional: Create a virtual environment
 python -m venv venv
-# Activate the virtual environment
+# Activate the virtual env
 # Windows:
 venv\Scripts\activate
 # Mac/Linux:
