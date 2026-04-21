@@ -31,8 +31,13 @@ export default function HrMock() {
         }
     };
 
-    const speakText = (text) => {
+    const speakText = (text, toggle = false) => {
         if (!window.speechSynthesis) return;
+        if (toggle && isSpeaking) {
+            window.speechSynthesis.cancel();
+            setIsSpeaking(false);
+            return;
+        }
         window.speechSynthesis.cancel();
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.onstart = () => setIsSpeaking(true);
@@ -99,6 +104,24 @@ export default function HrMock() {
             }
         }
     };
+
+    useEffect(() => {
+        const stopAudioOnVisibilityChange = () => {
+            if (document.hidden && window.speechSynthesis) {
+                window.speechSynthesis.cancel();
+                setIsSpeaking(false);
+            }
+        };
+
+        document.addEventListener('visibilitychange', stopAudioOnVisibilityChange);
+
+        return () => {
+            document.removeEventListener('visibilitychange', stopAudioOnVisibilityChange);
+            if (window.speechSynthesis) {
+                window.speechSynthesis.cancel();
+            }
+        };
+    }, []);
 
     useEffect(() => {
         const hasQuestion = !!currentQuestion;
@@ -179,9 +202,9 @@ export default function HrMock() {
                                 <div className="font-headline text-xl font-bold text-on-surface leading-relaxed flex items-center justify-between">
                                     <span>Question:</span>
                                     <button
-                                        onClick={() => speakText(currentQuestion)}
+                                        onClick={() => speakText(currentQuestion, true)}
                                         className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${isSpeaking ? 'bg-primary text-white animate-pulse' : 'bg-surface-container-high text-on-surface-variant'}`}
-                                        title="Speak Question"
+                                        title={isSpeaking ? "Stop Speaking" : "Speak Question"}
                                     >
                                         <span className="material-symbols-outlined">{isSpeaking ? 'volume_up' : 'volume_down'}</span>
                                     </button>
